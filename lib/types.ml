@@ -15,6 +15,7 @@ type json =
   | COL
   | COM
   | EOF
+  | ERROR of string
 ;;
 
 type mode = 

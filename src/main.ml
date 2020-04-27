@@ -15,5 +15,6 @@ let _ =
       | t -> do_next (t :: acc)
     in List.rev (do_next [])
   in
-  let _ = print_endline (Util.to_string tks)
+  let _ = print_endline (Util.to_string tks) in
+  let _ = print_endline (Util.to_token_string tks)
 in ()

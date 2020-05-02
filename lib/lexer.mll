@@ -1,13 +1,14 @@
 {
   open Lexing
   open Types
+
+  exception SyntaxError of string
 }
 
 let non_zero_digit = ['1'-'9']
 let digit = ['0'-'9']
 let int =   '-'? non_zero_digit digit*
 let float = '-'? digit+ '.' digit+
-(* let str = "\"" ['A'-'Z''a'-'z''0'-'9''-''_''.''/'':'' '',''!''@''#''$''%''^''&''*''('')'';''=''+''\'''?''<''>']* "\"" *)
 let str = "\"" ( [^'"'] | "\\\"" )* "\""
 
 let whitespace = [' ' '\t']
@@ -32,4 +33,4 @@ rule token = parse
   | int                     { Int (int_of_string (Lexing.lexeme lexbuf)) }
   | float                   { Float (float_of_string (Lexing.lexeme lexbuf)) }
   | eof                     { EOF }
-  | _                       { ERROR (Lexing.lexeme lexbuf) }
+  | _                       { raise (SyntaxError (Lexing.lexeme lexbuf)) }

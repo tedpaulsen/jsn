@@ -7,7 +7,8 @@ let non_zero_digit = ['1'-'9']
 let digit = ['0'-'9']
 let int =   '-'? non_zero_digit digit*
 let float = '-'? digit+ '.' digit+
-let str = "\"" ['A'-'Z''a'-'z''0'-'9']* "\""
+(* let str = "\"" ['A'-'Z''a'-'z''0'-'9''-''_''.''/'':'' '',''!''@''#''$''%''^''&''*''('')'';''=''+''\'''?''<''>']* "\"" *)
+let str = "\"" [ ^'\"' ]* "\""
 
 let whitespace = [' ' '\t']
 let newline = '\r' | '\n' | "\r\n"

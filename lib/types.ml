@@ -3,10 +3,8 @@ type json =
   | Int of int
   | String of string
   | Float of float
-  | Entry of (string * json)
-  | Array of json list
-  | True
-  | False
+  (* | Entry of (string * json) *)
+  (* | Array of json list *)
   | Null
   | BRA
   | KET

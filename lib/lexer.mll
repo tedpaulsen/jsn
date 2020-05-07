@@ -28,8 +28,7 @@ rule token = parse
   | "]"                     { RAY }
   | ":"                     { COL }
   | ","                     { COM }
-  | true                    { True }
-  | false                   { False }
+  | true | false            { Bool (bool_of_string (Lexing.lexeme lexbuf)) }
   | int                     { Int (int_of_string (Lexing.lexeme lexbuf)) }
   | float                   { Float (float_of_string (Lexing.lexeme lexbuf)) }
   | eof                     { EOF }

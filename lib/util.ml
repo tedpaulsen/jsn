@@ -1,5 +1,5 @@
-let to_token_string (obj : Types.json list) : string =
-  let rec to_token_string_list (obj_ : Types.json list) : string list =
+let to_token_string (obj : Types.json_token list) : string =
+  let rec to_token_string_list (obj_ : Types.json_token list) : string list =
     match obj_ with
     | BRA :: xs -> "BRA" :: to_token_string_list xs
     | KET :: xs -> "KET" :: to_token_string_list xs
@@ -18,8 +18,8 @@ let to_token_string (obj : Types.json list) : string =
   in String.concat " " (to_token_string_list obj)
 ;;
 
-let to_string (obj : Types.json list) : string =
-  let rec to_string_list (obj_ : Types.json list) : string list =
+let to_string (obj : Types.json_token list) : string =
+  let rec to_string_list (obj_ : Types.json_token list) : string list =
     match obj_ with
     | BRA :: xs -> "{" :: to_string_list xs
     | KET :: xs -> "}" :: to_string_list xs

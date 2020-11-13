@@ -1,6 +1,6 @@
 {
   open Lexing
-  open Types
+  open JsonTypes
 
   exception SyntaxError of string
 }

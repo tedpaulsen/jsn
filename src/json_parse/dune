@@ -1,0 +1,5 @@
+(library
+  (name json_parse)
+  (public_name json_parse))
+
+(ocamllex jsonLexer)

@@ -1,8 +1,8 @@
-open Types
+open Json_parse
 
 exception InputError of string
 
-let _ =
+let _ : unit =
   let argv = Sys.argv in
   let lexbuf = match Array.length argv with
     | 1 -> Lexing.from_channel stdin 
@@ -12,10 +12,9 @@ let _ =
   in
   let tks =
     let rec do_next acc =
-      match Lexer.token lexbuf with
+      match JsonLexer.token lexbuf with
       | EOF -> acc
       | t -> do_next (t :: acc)
     in List.rev (do_next [])
-  in
-  let _ = print_endline (Util.to_token_string tks)
-in ()
+  in 
+  PprintJsonTokens.pprint_tokens tks

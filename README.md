@@ -6,11 +6,15 @@ A JSON lexer and parser written in ocaml.
 ```
 $ opam switch create . ocaml-base-compiler.4.09.0
 ```
-3. Build
+3. Setup 
 ```
-$ make native
+$ make install
 ```
-4. Use
+4. Build
 ```
-$ cat some.json | main.native
+$ make build
+```
+5. Use
+```
+$ dune exec src/main.exe some_json_file.json
 ```

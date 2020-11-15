@@ -10,11 +10,7 @@ let _ : unit =
                        Lexing.from_string (FileUtils.read_file in_ch)
     | _ -> raise (InputError "Input must be read from stdin or from a provided filename")
   in
-  let tks =
-    let rec do_next acc =
-      match JsonLexer.token lexbuf with
-      | EOF -> acc
-      | t -> do_next (t :: acc)
-    in List.rev (do_next [])
-  in 
-  PprintJsonTokens.pprint_tokens tks
+  let _ = 
+    try JsonParser.exec JsonLexer.token lexbuf 
+    with JsonLexer.SyntaxError msg -> Printf.fprintf stderr "Syntax error at position %d : \"%s\"" (Lexing.lexeme_start lexbuf) msg; None
+  in ()

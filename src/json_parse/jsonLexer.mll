@@ -1,13 +1,13 @@
 {
   open Lexing
-  open JsonTypes
+  open JsonParser
 
   exception SyntaxError of string
 }
 
 let non_zero_digit = ['1'-'9']
 let digit = ['0'-'9']
-let int =   '-'? non_zero_digit digit*
+let int =   '-'? digit*
 let float = '-'? digit+ '.' digit+
 let str = "\"" ( [^'"'] | "\\\"" )* "\""
 
@@ -21,15 +21,16 @@ let null = "null"
 rule token = parse
   | whitespace+             { token lexbuf }
   | newline                 { new_line lexbuf; token lexbuf }
-  | str                     { String (Lexing.lexeme lexbuf) }
+  | str                     { STRING (Lexing.lexeme lexbuf) }
   | "{"                     { BRA }
   | "}"                     { KET }
   | "["                     { ARR }
   | "]"                     { RAY }
   | ":"                     { COL }
   | ","                     { COM }
-  | true | false            { Bool (bool_of_string (Lexing.lexeme lexbuf)) }
-  | int                     { Int (int_of_string (Lexing.lexeme lexbuf)) }
-  | float                   { Float (float_of_string (Lexing.lexeme lexbuf)) }
+  | true | false            { BOOL (bool_of_string (Lexing.lexeme lexbuf)) }
+  | int                     { INT (int_of_string (Lexing.lexeme lexbuf)) }
+  | float                   { FLOAT (float_of_string (Lexing.lexeme lexbuf)) }
+  | null                    { NULL }
   | eof                     { EOF }
   | _                       { raise (SyntaxError (Lexing.lexeme lexbuf)) }

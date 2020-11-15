@@ -1,9 +1,9 @@
-type json_token =
-  | Bool of bool
-  | Int of int
-  | String of string
-  | Float of float
-  | Null
+(* type json_token =
+  | BOOL of bool
+  | INT of int
+  | STRING of string
+  | FLOAT of float
+  | NULL
   | BRA
   | KET
   | ARR
@@ -11,15 +11,13 @@ type json_token =
   | COL
   | COM
   | EOF
-  | ERROR of string
-;;
+  | ERROR of string *)
 
-type json_type =
+type json_fragment =
   | JsonBool of bool
   | JsonString of string
   | JsonInt of int
   | JsonFloat of float
-  | JsonObject of string * json_type
-  | JsonArray of json_type list
   | JsonNull
-;;
+  | JsonObject of (string * json_fragment) list
+  | JsonArray of json_fragment list

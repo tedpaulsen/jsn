@@ -4,3 +4,4 @@ _opam
 
 *.native
 *.byte
+json_samples/

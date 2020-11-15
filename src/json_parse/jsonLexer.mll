@@ -18,9 +18,9 @@ let true = "true"
 let false = "false"
 let null = "null"
 
-rule token = parse
-  | whitespace+             { token lexbuf }
-  | newline                 { new_line lexbuf; token lexbuf }
+rule read = parse
+  | whitespace+             { read lexbuf }
+  | newline                 { new_line lexbuf; read lexbuf }
   | str                     { STRING (Lexing.lexeme lexbuf) }
   | "{"                     { BRA }
   | "}"                     { KET }

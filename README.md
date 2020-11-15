@@ -6,7 +6,7 @@ A JSON lexer and parser written in ocaml.
 ```
 $ opam switch create . ocaml-base-compiler.4.09.0
 ```
-3. Setup 
+3. Setup
 ```
 $ make install
 ```

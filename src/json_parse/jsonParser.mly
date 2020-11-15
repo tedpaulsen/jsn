@@ -14,10 +14,9 @@
 %token COL
 %token COM
 %token EOF
-%token <string> ERROR
 
 /* define entry point and return type */
-%start <JsonTypes.json_fragment option> exec 
+%start <JsonTypes.json_fragment option> exec
 
 %%
 
@@ -27,7 +26,7 @@ exec:
   | EOF             { None }
 ;
 
-obj: 
+obj:
   flds = separated_list(COM, obj_entry)      { flds }
 ;
 
@@ -49,4 +48,3 @@ fragment:
   | f = FLOAT                       { JsonFloat f }
   | NULL                            { JsonNull }
 ;
-

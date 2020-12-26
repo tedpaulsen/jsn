@@ -1,4 +1,4 @@
-A JSON lexer and parser written in ocaml.
+A json parser and path finding tool written in ocaml.
 
 ## Build from source
 1. Clone this repository
@@ -16,5 +16,21 @@ $ make build
 ```
 5. Use
 ```
-$ dune exec src/main.exe some_json_file.json
+$ ./jsn JSON_FILE PATH_SPECIFIER
 ```
+where `JSON_FILE` is some json file which you would like to parse
+and `PATH_SPECIFIER` is some xpath-like json path specifier which
+you would like to find.
+
+Ex:
+```
+// test.json
+
+{
+  "b": "bbb",
+  "c": "ccc",
+  "d": [ "a","d" ],
+  "e": { "yes": "no" }
+}
+```
+Running `./jsn json_samples/test.json ".d[0]"` would result in `"a"`

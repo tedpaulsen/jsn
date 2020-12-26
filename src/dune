@@ -1,5 +1,5 @@
 (executable
  (name main)
- (libraries json_parse)
+ (libraries json_parse path_spec_parse)
  (lint
   (pps ppx_js_style -annotated-ignores -styler -pretty -dated-deprecation)))

@@ -6,7 +6,7 @@ install:
 
 prebuild:
 	cp jsn.opam json_parse.opam
-	cp jsn.opam query_parse.opam
+	cp jsn.opam path_spec_parse.opam
 
 build:
 	make prebuild

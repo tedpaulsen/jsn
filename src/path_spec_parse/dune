@@ -1,0 +1,8 @@
+(library
+ (name path_spec_parse)
+ (public_name path_spec_parse))
+
+(ocamllex pathSpecLexer)
+
+(menhir
+ (modules pathSpecParser))

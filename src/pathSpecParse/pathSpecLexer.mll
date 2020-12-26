@@ -4,7 +4,6 @@
   exception SyntaxError of string
 }
 
-(* let str = ([^'.'] | [^'"'] | "\\\"")* *)
 let str = (['a'-'z'] | ['A'-'Z'] | ['0'-'9'])+
 let int = ['0' - '9']+
 

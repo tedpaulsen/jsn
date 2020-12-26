@@ -5,17 +5,20 @@ install:
 	eval $(opam env)
 
 prebuild:
-	cp jsn.opam json_parse.opam
-	cp jsn.opam path_spec_parse.opam
+	cp jsn.opam jsonParse.opam
+	cp jsn.opam pathSpecParse.opam
 
 build:
 	make prebuild
-	dune build @fmt
+	dune build
+
+release:
+	make prebuild
+	dune build @fmt --auto-promote
 	dune build
 
 clean:
 	dune clean
 
-# Execute this target like: make run JSON_FILE=asdf.json
 run:
-	dune exec src/main.exe $(JSON_FILE)
+	dune exec src/main.exe

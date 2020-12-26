@@ -1,6 +1,6 @@
 (library
- (name path_spec_parse)
- (public_name path_spec_parse))
+ (name pathSpecParse)
+ (public_name pathSpecParse))
 
 (ocamllex pathSpecLexer)
 

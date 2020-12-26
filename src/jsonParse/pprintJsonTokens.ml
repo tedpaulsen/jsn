@@ -41,37 +41,24 @@ let pprint_tokens (tokens : JsonParser.token list) : unit =
 
 let pprint (tokens : JsonParser.token list) : unit = print_endline (to_string tokens)
 
-(* let rec pprint_fragment frg =
-  match frg with
-  | JsonBool b -> string_of_bool b
-  | JsonString s -> s
-  | JsonInt i -> string_of_int i
-  | JsonFloat f -> string_of_float f
-  | JsonNull -> "null"
+(* let rec pprint_fragment frg = match frg with | JsonBool b -> string_of_bool b |
+   JsonString s -> s | JsonInt i -> string_of_int i | JsonFloat f -> string_of_float f |
+   JsonNull -> "null"
 
-  let rec to_string_list obj = *)
+   let rec to_string_list obj = *)
 
 let rec fragment_to_string frg : string =
-  let field_to_string f =
-    match f with
-    | (k, v) -> k ^ ":" ^ fragment_to_string v
-  in
-
-  let array_to_string a =
-    List.map fragment_to_string a
-  in
-
+  let field_to_string f = match f with k, v -> k ^ ":" ^ fragment_to_string v in
+  let array_to_string a = List.map fragment_to_string a in
   let literal_to_string l =
     match l with
-    | JsonBool b -> string_of_bool b
+    | JsonBool b   -> string_of_bool b
     | JsonString s -> s
-    | JsonInt i -> string_of_int i
-    | JsonFloat f -> string_of_float f
-    | JsonNull -> "null"
-    | JsonArray a -> "[" ^ (String.concat "," (array_to_string a)) ^ "]"
-    | JsonObject o -> "{" ^ (String.concat "," (List.map field_to_string o)) ^ "}"
-  in
-
+    | JsonInt i    -> string_of_int i
+    | JsonFloat f  -> string_of_float f
+    | JsonNull     -> "null"
+    | JsonArray a  -> "[" ^ String.concat "," (array_to_string a) ^ "]"
+    | JsonObject o -> "{" ^ String.concat "," (List.map field_to_string o) ^ "}" in
   literal_to_string frg
 
 let pprint_json frg = print_endline (fragment_to_string frg)

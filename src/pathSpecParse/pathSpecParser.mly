@@ -1,5 +1,5 @@
 %{
-  open! Path_spec_types
+  open PathSpecTypes
 %}
 
 %token DOT
@@ -9,7 +9,7 @@
 %token <string> ID
 %token EOF
 
-%start <Path_spec_types.specifier option> exec
+%start <PathSpecTypes.specifier option> exec
 
 %%
 

@@ -1,0 +1,9 @@
+#! /bin/sh
+
+# Run the json tool.
+#
+# Make sure to rebuild the project when making changes `make build`
+#
+# ex: ./jsn json_samples/test.json ".Comments[33].DatePosted"
+
+_build/default/src/main.exe $1 $2

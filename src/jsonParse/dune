@@ -1,6 +1,6 @@
 (library
- (name json_parse)
- (public_name json_parse))
+ (name jsonParse)
+ (public_name jsonParse))
 
 (ocamllex jsonLexer)
 
